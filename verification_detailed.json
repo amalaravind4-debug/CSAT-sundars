@@ -1,0 +1,88 @@
+{
+  "rows": [
+    {
+      "p": 0.02,
+      "target": 101,
+      "scrollY": 101,
+      "index": "01",
+      "visible": 1
+    },
+    {
+      "p": 0.16,
+      "target": 810,
+      "scrollY": 777,
+      "index": "02",
+      "visible": 1
+    },
+    {
+      "p": 0.24,
+      "target": 1215,
+      "scrollY": 1202,
+      "index": "02",
+      "visible": 1
+    },
+    {
+      "p": 0.33,
+      "target": 1671,
+      "scrollY": 1653,
+      "index": "03",
+      "visible": 1
+    },
+    {
+      "p": 0.43,
+      "target": 2178,
+      "scrollY": 2141,
+      "index": "03",
+      "visible": 2
+    },
+    {
+      "p": 0.52,
+      "target": 2633,
+      "scrollY": 2619,
+      "index": "04",
+      "visible": 1
+    },
+    {
+      "p": 0.61,
+      "target": 3089,
+      "scrollY": 3070,
+      "index": "05",
+      "visible": 1
+    },
+    {
+      "p": 0.7,
+      "target": 3545,
+      "scrollY": 3527,
+      "index": "05",
+      "visible": 1
+    },
+    {
+      "p": 0.8,
+      "target": 4051,
+      "scrollY": 4025,
+      "index": "06",
+      "visible": 1
+    },
+    {
+      "p": 0.9,
+      "target": 4558,
+      "scrollY": 4531,
+      "index": "07",
+      "visible": 1
+    },
+    {
+      "p": 0.97,
+      "target": 4912,
+      "scrollY": 4905,
+      "index": "07",
+      "visible": 1
+    }
+  ],
+  "final": {
+    "final_scroll": 5064,
+    "index": "07",
+    "visible": 1,
+    "cta": "YOUR JOURNEY STARTS HERE\nStop Preparing\nAlone.\n\nMeet your personal CSAT Mentor \u2014 explanations when you're stuck, practice when you're ready, and a plan that changes with you.\n\nStart Your CSAT Journey \u2192\n\u25c9 Watch Demo\n\u25c9 No credit card required\n\u2713 Free plan available\n\u25cc Cancel anytime"
+  },
+  "errors": []
+}

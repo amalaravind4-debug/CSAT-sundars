@@ -1,0 +1,120 @@
+{
+  "mobile": {
+    "scene_count": 7,
+    "story_height": 5908,
+    "checks": [
+      {
+        "bucket": 1,
+        "visible": 1,
+        "index": "01",
+        "images": 2,
+        "loaded": true
+      },
+      {
+        "bucket": 2,
+        "visible": 1,
+        "index": "01",
+        "images": 2,
+        "loaded": true
+      },
+      {
+        "bucket": 3,
+        "visible": 1,
+        "index": "02",
+        "images": 1,
+        "loaded": true
+      },
+      {
+        "bucket": 4,
+        "visible": 1,
+        "index": "03",
+        "images": 1,
+        "loaded": true
+      },
+      {
+        "bucket": 5,
+        "visible": 2,
+        "index": "03",
+        "images": 2,
+        "loaded": true
+      },
+      {
+        "bucket": 6,
+        "visible": 1,
+        "index": "05",
+        "images": 1,
+        "loaded": true
+      },
+      {
+        "bucket": 7,
+        "visible": 1,
+        "index": "06",
+        "images": 0,
+        "loaded": true
+      }
+    ],
+    "final_index": "07",
+    "final_visible": 1,
+    "final_cta": true,
+    "errors": []
+  },
+  "desktop": {
+    "scene_count": 7,
+    "story_height": 6480,
+    "checks": [
+      {
+        "bucket": 1,
+        "visible": 1,
+        "index": "01",
+        "images": 2,
+        "loaded": true
+      },
+      {
+        "bucket": 2,
+        "visible": 1,
+        "index": "01",
+        "images": 2,
+        "loaded": true
+      },
+      {
+        "bucket": 3,
+        "visible": 1,
+        "index": "02",
+        "images": 1,
+        "loaded": true
+      },
+      {
+        "bucket": 4,
+        "visible": 1,
+        "index": "03",
+        "images": 1,
+        "loaded": true
+      },
+      {
+        "bucket": 5,
+        "visible": 1,
+        "index": "04",
+        "images": 1,
+        "loaded": true
+      },
+      {
+        "bucket": 6,
+        "visible": 1,
+        "index": "05",
+        "images": 1,
+        "loaded": true
+      },
+      {
+        "bucket": 7,
+        "visible": 1,
+        "index": "06",
+        "images": 0,
+        "loaded": true
+      }
+    ],
+    "final_index": "07",
+    "final_visible": 1,
+    "final_cta": true,
+    "errors": []
+  }
+}
