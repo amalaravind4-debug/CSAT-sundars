@@ -19,17 +19,36 @@ a{text-decoration:none;color:inherit}button{font:inherit}.app{min-height:100vh;b
 .story-index{position:fixed;right:14px;top:43%;z-index:92;display:flex;flex-direction:column;align-items:center;gap:5px;color:#7b8599;font-size:9px}.story-index>b{color:#fff;font-size:16px}.story-index>div{display:flex;flex-direction:column;gap:7px;margin-top:5px}.story-index i{width:4px;height:22px;border-radius:99px;background:rgba(255,255,255,.16);display:block}.story-index i.on{background:linear-gradient(#9d64ff,#54e0ff);box-shadow:0 0 13px rgba(77,224,255,.55)}.footer{height:20vh;background:#060812;color:#858fa2;display:grid;place-items:center;text-align:center;font-size:11px}
 
 @media(max-width:900px){
-.cinematic{height:700vh}.nav{height:62px;padding:0 14px}.nav nav{display:none}.nav .btn{font-size:11px;padding:10px 12px}.scene{min-height:650px}.story-index{right:8px;top:43%}
-.hero-copy{left:18px;right:18px;top:8%;width:auto;transform:none}.hero-copy h1{font-size:clamp(43px,13.2vw,68px);margin:14px 0 12px}.hero-copy p{font-size:15px;max-width:370px}.actions{margin-top:17px}.btn{font-size:12px;padding:11px 14px}.hero-stats{grid-template-columns:1fr 1fr;gap:8px;margin-top:15px;max-width:315px}.hero-stats b{font-size:8px}.hero-stats span{font-size:8px}.hero-person{left:50%;right:auto;bottom:0;width:98vw;height:47svh;transform:translateX(-50%);transform-origin:50% 85%}.scribble{right:4%;top:8%;font-size:12px}.hero-chat{left:16px;right:16px;top:auto;bottom:7vh;width:auto;padding:14px}
-.split-copy{left:18px;right:18px;top:8%;width:auto}.split-copy h2{font-size:42px}.split-copy p{font-size:15px}.feature-list{display:none}.mentor-scene-person{left:50%;bottom:30vh;transform:translateX(-50%);width:78vw;height:34svh}.scribble.small{font-size:12px}.chat-window{left:16px;right:16px;top:auto;bottom:7vh;width:auto;padding:15px}
-.practice-copy{left:18px;right:18px;top:8%;width:auto}.practice-copy h2{font-size:42px}.practice-copy p{font-size:15px}.practice-tabs{margin-top:10px}.practice-tabs span{padding:7px 8px}.question-card{left:16px;right:16px;top:auto;bottom:27vh;width:auto;padding:15px}.question-card h3{font-size:13px}.practice-person{right:10px;bottom:4vh;width:175px;height:210px}.hint-card{display:none}
-.progress-copy{left:18px;right:18px;top:8%;width:auto}.progress-copy h2{font-size:42px}.progress-copy p{font-size:15px}.analytics{left:16px;right:16px;top:auto;bottom:25vh;width:auto;padding:15px}.analytics-grid{grid-template-columns:90px 1fr;gap:9px}.ring{width:86px;height:86px}.ring:after{inset:8px}.ring strong{font-size:18px}.progress-person{right:-2vw;bottom:0;width:68vw;height:43svh}.stat{display:none}
-.light-scene{min-height:650px}.ecosystem-heading{left:18px;right:18px;top:8%;width:auto}.ecosystem-heading h2{font-size:42px}.ecosystem-heading p{font-size:15px}.ecosystem-grid{left:16px;right:16px;bottom:22vh;grid-template-columns:1fr 1fr;gap:8px}.eco-card{min-height:136px;padding:12px}.eco-card>b{font-size:11px}.eco-card small{font-size:9px}.ecosystem-person{right:0;bottom:0;width:63vw;height:40svh}
-.stories-head{left:18px;right:18px;top:8%;width:auto}.stories-head h2{font-size:42px}.stories-head p{font-size:15px}.testimonials{left:16px;right:16px;bottom:9vh;grid-template-columns:1fr;gap:7px}.testimonial{min-height:0;padding:14px}.testimonial:not(:first-child){display:none}.testimonial p{font-size:12px;margin:10px 0 15px}
-.journey-copy{left:18px;right:18px;top:8%;width:auto}.journey-copy h2{font-size:56px}.journey-copy p{font-size:15px}.journey-person{left:50%;right:auto;bottom:0;width:86vw;height:47svh;transform:translateX(-50%)}
-.footer{height:17vh}
+.cinematic{height:700vh}.nav{height:62px;padding:0 14px}.nav nav{display:none}.nav .btn{font-size:11px;padding:10px 12px}.scene{min-height:0!important;height:100%!important}.story-index{right:8px;top:43%}
+.hero-copy{left:18px;right:18px;top:8%;width:auto;transform:none}.hero-copy h1{font-size:clamp(38px,11.5vw,62px);margin:12px 0 10px;line-height:.9}.hero-copy p{font-size:14px;max-width:350px}.actions{margin-top:14px;position:relative;z-index:50}.btn{font-size:12px;padding:10px 14px}.hero-stats{grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;max-width:315px}.hero-stats b{font-size:8px}.hero-stats span{font-size:8px}
+.hero-person{left:0;right:0;margin:0 auto;bottom:0;width:min(94vw,390px);height:47svh;transform-origin:50% 85%}
+.scribble{right:4%;top:6%;font-size:12px}
+.hero-chat{left:14px;right:14px;top:auto;bottom:6vh;width:auto;padding:13px;border-radius:18px;z-index:45}
+.split-copy{left:18px;right:18px;top:8%;width:auto}.split-copy h2{font-size:clamp(34px,9.5vw,46px);margin:10px 0;line-height:.95}.split-copy p{font-size:14px}.feature-list{display:none}
+.mentor-scene-person{left:0;right:0;margin:0 auto;bottom:28vh;width:min(78vw,330px);height:35svh;transform-origin:50% 85%}
+.scribble.small{font-size:12px}
+.chat-window{left:14px;right:14px;top:auto;bottom:6vh;width:auto;padding:14px;border-radius:18px;z-index:45}
+.practice-copy{left:18px;right:18px;top:8%;width:auto}.practice-copy h2{font-size:clamp(34px,9.5vw,46px);margin:10px 0;line-height:.95}.practice-copy p{font-size:14px}.practice-tabs{margin-top:10px;position:relative;z-index:50}.practice-tabs span{padding:6px 8px}
+.question-card{left:14px;right:14px;top:auto;bottom:25vh;width:auto;padding:15px;border-radius:18px;z-index:45}
+.question-card h3{font-size:13px;line-height:1.4}.answers{gap:6px}.answers span{padding:9px;font-size:10px}
+.practice-person{right:10px;bottom:3vh;width:min(44vw,180px);height:min(26svh,210px);transform-origin:50% 85%}.hint-card{display:none}
+.progress-copy{left:18px;right:18px;top:8%;width:auto}.progress-copy h2{font-size:clamp(34px,9.5vw,46px);margin:10px 0;line-height:.95}.progress-copy p{font-size:14px}
+.analytics{left:14px;right:14px;top:auto;bottom:24vh;width:auto;padding:14px;border-radius:18px;z-index:45}.analytics-grid{grid-template-columns:84px 1fr;gap:9px}.ring{width:82px;height:82px}.ring:after{inset:8px}.ring strong{font-size:17px}
+.progress-person{right:-4px;bottom:0;width:min(64vw,280px);height:42svh;transform-origin:50% 85%}.stat{display:none}
+.light-scene{min-height:0!important}.ecosystem-heading{left:18px;right:18px;top:8%;width:auto}.ecosystem-heading h2{font-size:clamp(34px,9.5vw,46px);margin:10px 0;line-height:.95}.ecosystem-heading p{font-size:14px}
+.ecosystem-grid{left:14px;right:14px;bottom:21vh;grid-template-columns:1fr 1fr;gap:8px;z-index:45}.eco-card{min-height:128px;padding:11px;border-radius:15px}.eco-card>b{font-size:11px}.eco-card small{font-size:8.5px}
+.ecosystem-person{right:0;bottom:0;width:min(60vw,260px);height:40svh;transform-origin:50% 85%}
+.stories-head{left:18px;right:18px;top:8%;width:auto}.stories-head h2{font-size:clamp(34px,9.5vw,46px);margin:10px 0;line-height:.95}.stories-head p{font-size:14px}
+.testimonials{left:14px;right:14px;bottom:8vh;grid-template-columns:1fr;gap:7px;z-index:45}.testimonial{min-height:0;padding:14px;border-radius:17px}.testimonial:not(:first-child){display:none}.testimonial p{font-size:12px;margin:8px 0 12px}
+.journey-copy{left:18px;right:18px;top:8%;width:auto}.journey-copy h2{font-size:clamp(44px,12vw,62px);margin:10px 0;line-height:.9}.journey-copy p{font-size:14px}
+.journey-person{left:0;right:0;margin:0 auto;bottom:0;width:min(88vw,380px);height:47svh;transform-origin:50% 85%}
+.mentor-human-img{pointer-events:none}
+.footer{height:16vh}
 }
-@media(max-width:390px){.hero-person{width:102vw}.journey-copy h2{font-size:52px}}
+@media(max-width:390px){
+  .hero-person{width:96vw}
+  .journey-copy h2{font-size:40px}
+}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
 
 /* v4 pinned-stage correction */

@@ -1,5 +1,5 @@
 
-import React,{useRef,useState} from "react";
+import React,{useEffect,useRef,useState} from "react";
 import {createRoot} from "react-dom/client";
 import {motion,useMotionValueEvent,useScroll,useSpring,useTransform} from "framer-motion";
 import "./styles.css";
@@ -7,96 +7,111 @@ import "./styles.css";
 const M="/mentor/";
 const SCENES=["Welcome","Mentor","Practice","Progress","Ecosystem","Stories","Journey"];
 
+function useIsMobile(){
+  const [isMobile,setIsMobile]=useState(typeof window!=="undefined"?window.innerWidth<=900:false);
+  useEffect(()=>{
+    const handleResize=()=>setIsMobile(window.innerWidth<=900);
+    window.addEventListener("resize",handleResize,{passive:true});
+    return ()=>window.removeEventListener("resize",handleResize);
+  },[]);
+  return isMobile;
+}
+
 function Btn({children,primary=false,href="#journey"}){
   return <motion.a className={`btn ${primary?"primary":""}`} href={href} whileHover={{y:-3,scale:1.015}} whileTap={{scale:.985}}>{children}</motion.a>
 }
 function Eyebrow({children,light=false}){return <span className={`eyebrow ${light?"light":""}`}>{children}</span>}
-const POSE_MOTIONS = {
-  hero: {
-    initial: { opacity: 0, x: 75, y: 22, scale: 0.94 },
-    animate: {
-      opacity: 1,
-      x: [0, -4, 0],
-      y: [0, -8, 0],
-      rotate: [-0.6, 0.6, -0.6],
-      scale: [1, 1.012, 1]
+
+function getPoseMotions(isMobile){
+  return {
+    hero: {
+      initial: { opacity: 0, x: isMobile ? 32 : 75, y: isMobile ? 12 : 22, scale: 0.95 },
+      animate: {
+        opacity: 1,
+        x: [0, isMobile ? -2 : -4, 0],
+        y: [0, isMobile ? -5 : -8, 0],
+        rotate: [-0.6, 0.6, -0.6],
+        scale: [1, 1.012, 1]
+      },
+      transition: {
+        x: { duration: 1.25, ease: [0.16, 1, 0.3, 1] },
+        opacity: { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
+        y: { duration: 5.2, repeat: Infinity, ease: "easeInOut" },
+        rotate: { duration: 5.2, repeat: Infinity, ease: "easeInOut" },
+        scale: { duration: 5.2, repeat: Infinity, ease: "easeInOut" }
+      }
     },
-    transition: {
-      x: { duration: 1.25, ease: [0.16, 1, 0.3, 1] },
-      opacity: { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
-      y: { duration: 5.2, repeat: Infinity, ease: "easeInOut" },
-      rotate: { duration: 5.2, repeat: Infinity, ease: "easeInOut" },
-      scale: { duration: 5.2, repeat: Infinity, ease: "easeInOut" }
-    }
-  },
-  explain: {
-    initial: { opacity: 0, x: -32, y: 16, scale: 0.94 },
-    animate: {
-      opacity: 1,
-      x: [0, 4, 0],
-      y: [0, -7, 0],
-      rotate: [-1, 0.4, -1],
-      scale: [1, 1.01, 1]
+    explain: {
+      initial: { opacity: 0, x: isMobile ? -18 : -32, y: 14, scale: 0.95 },
+      animate: {
+        opacity: 1,
+        x: [0, isMobile ? 2 : 4, 0],
+        y: [0, isMobile ? -5 : -7, 0],
+        rotate: [-1, 0.4, -1],
+        scale: [1, 1.01, 1]
+      },
+      transition: {
+        x: { duration: 1.1, ease: [0.16, 1, 0.3, 1] },
+        opacity: { duration: 0.85 },
+        y: { duration: 4.8, repeat: Infinity, ease: "easeInOut" },
+        rotate: { duration: 4.8, repeat: Infinity, ease: "easeInOut" },
+        scale: { duration: 4.8, repeat: Infinity, ease: "easeInOut" }
+      }
     },
-    transition: {
-      x: { duration: 1.1, ease: [0.16, 1, 0.3, 1] },
-      opacity: { duration: 0.85 },
-      y: { duration: 4.8, repeat: Infinity, ease: "easeInOut" },
-      rotate: { duration: 4.8, repeat: Infinity, ease: "easeInOut" },
-      scale: { duration: 4.8, repeat: Infinity, ease: "easeInOut" }
-    }
-  },
-  point: {
-    initial: { opacity: 0, x: 35, y: 20, scale: 0.94 },
-    animate: {
-      opacity: 1,
-      x: [0, -10, 0],
-      y: [0, -8, 0],
-      rotate: [-1.8, -0.4, -1.8],
-      scale: [1, 1.014, 1]
+    point: {
+      initial: { opacity: 0, x: isMobile ? 18 : 35, y: 16, scale: 0.95 },
+      animate: {
+        opacity: 1,
+        x: [0, isMobile ? -4 : -10, 0],
+        y: [0, isMobile ? -6 : -8, 0],
+        rotate: [-1.8, -0.4, -1.8],
+        scale: [1, 1.014, 1]
+      },
+      transition: {
+        x: { duration: 1.1, ease: [0.16, 1, 0.3, 1] },
+        opacity: { duration: 0.8 },
+        y: { duration: 4.6, repeat: Infinity, ease: "easeInOut" },
+        rotate: { duration: 4.6, repeat: Infinity, ease: "easeInOut" },
+        scale: { duration: 4.6, repeat: Infinity, ease: "easeInOut" }
+      }
     },
-    transition: {
-      x: { duration: 1.1, ease: [0.16, 1, 0.3, 1] },
-      opacity: { duration: 0.8 },
-      y: { duration: 4.6, repeat: Infinity, ease: "easeInOut" },
-      rotate: { duration: 4.6, repeat: Infinity, ease: "easeInOut" },
-      scale: { duration: 4.6, repeat: Infinity, ease: "easeInOut" }
-    }
-  },
-  think: {
-    initial: { opacity: 0, y: 22, scale: 0.94 },
-    animate: {
-      opacity: 1,
-      y: [0, -6, 0],
-      rotate: [-1.5, 0.4, -1.5],
-      scale: [1, 1.008, 1]
+    think: {
+      initial: { opacity: 0, y: isMobile ? 15 : 22, scale: 0.95 },
+      animate: {
+        opacity: 1,
+        y: [0, isMobile ? -5 : -6, 0],
+        rotate: [-1.5, 0.4, -1.5],
+        scale: [1, 1.008, 1]
+      },
+      transition: {
+        y: { duration: 5.4, repeat: Infinity, ease: "easeInOut" },
+        rotate: { duration: 5.4, repeat: Infinity, ease: "easeInOut" },
+        scale: { duration: 5.4, repeat: Infinity, ease: "easeInOut" },
+        opacity: { duration: 0.85 }
+      }
     },
-    transition: {
-      y: { duration: 5.4, repeat: Infinity, ease: "easeInOut" },
-      rotate: { duration: 5.4, repeat: Infinity, ease: "easeInOut" },
-      scale: { duration: 5.4, repeat: Infinity, ease: "easeInOut" },
-      opacity: { duration: 0.85 }
+    cta: {
+      initial: { opacity: 0, y: isMobile ? 18 : 26, scale: 0.94 },
+      animate: {
+        opacity: 1,
+        y: [0, isMobile ? -7 : -10, 0],
+        rotate: [-0.6, 0.8, -0.6],
+        scale: [1, 1.016, 1]
+      },
+      transition: {
+        y: { duration: 4.4, repeat: Infinity, ease: "easeInOut" },
+        rotate: { duration: 4.4, repeat: Infinity, ease: "easeInOut" },
+        scale: { duration: 4.4, repeat: Infinity, ease: "easeInOut" },
+        opacity: { duration: 0.85 }
+      }
     }
-  },
-  cta: {
-    initial: { opacity: 0, y: 26, scale: 0.93 },
-    animate: {
-      opacity: 1,
-      y: [0, -10, 0],
-      rotate: [-0.6, 0.8, -0.6],
-      scale: [1, 1.016, 1]
-    },
-    transition: {
-      y: { duration: 4.4, repeat: Infinity, ease: "easeInOut" },
-      rotate: { duration: 4.4, repeat: Infinity, ease: "easeInOut" },
-      scale: { duration: 4.4, repeat: Infinity, ease: "easeInOut" },
-      opacity: { duration: 0.85 }
-    }
-  }
-};
+  };
+}
 
 function Mentor({pose,style,className=""}){
-  const motionPreset = POSE_MOTIONS[pose] || POSE_MOTIONS.hero;
+  const isMobile = useIsMobile();
+  const presets = getPoseMotions(isMobile);
+  const motionPreset = presets[pose] || presets.hero;
   return <div className={`mentor ${className}`} style={style}>
     <motion.img
       className="mentor-human-img"
@@ -106,7 +121,7 @@ function Mentor({pose,style,className=""}){
       initial={motionPreset.initial}
       animate={motionPreset.animate}
       transition={motionPreset.transition}
-      whileHover={{scale:1.025,y:-4,transition:{duration:0.3}}}
+      whileHover={!isMobile ? {scale:1.025,y:-4,transition:{duration:0.3}} : undefined}
     />
     <div className="mentor-aura"/>
   </div>
@@ -124,6 +139,7 @@ function sceneTrack(p,a,b,isFirst=false){
 function Bar({label,width}){return <div><span>{label}</span><i style={{width}}/></div>}
 function App(){
  const ref=useRef(null);
+ const isMobile=useIsMobile();
  const {scrollYProgress:raw}=useScroll({target:ref,offset:["start start","end end"]});
  const p=useSpring(raw,{stiffness:80,damping:24,mass:.3});
  const [active,setActive]=useState(0);
@@ -138,6 +154,12 @@ function App(){
  const eco=sceneTrack(p,.575,.735);
  const stories=sceneTrack(p,.72,.87);
  const journey=sceneTrack(p,.855,1);
+ const heroPersonX=useTransform(p,[0,.17,.35,.68,1],isMobile?[0,0,-20,-10,0]:[0,-5,-85,-45,0]);
+ const mentorPersonX=useTransform(p,[.135,.23,.30],isMobile?[-20,0,15]:[-75,0,35]);
+ const practicePersonX=useTransform(p,[.285,.38,.445],isMobile?[20,0,-10]:[100,0,-20]);
+ const progressPersonX=useTransform(p,[.43,.52,.59],isMobile?[18,0,-10]:[70,0,-25]);
+ const ecoPersonX=useTransform(p,[.575,.66,.735],isMobile?[18,0,-10]:[70,0,-25]);
+ const journeyPersonX=useTransform(p,[.855,1],isMobile?[25,0]:[100,0]);
 
  return <div ref={ref} className="app">
    <header className="nav">
@@ -175,7 +197,7 @@ function App(){
          </motion.div>
          <motion.div 
            className="hero-person" 
-           style={{x:useTransform(p,[0,.17,.35,.68,1],[0,-5,-85,-45,0]),y:useTransform(p,[0,.35,.8],[0,18,0]),scale:useTransform(p,[0,.17,.35,.68,1],[1,.98,.82,.86,1.02])}}
+           style={{x:heroPersonX,y:useTransform(p,[0,.35,.8],[0,18,0]),scale:useTransform(p,[0,.17,.35,.68,1],[1,.98,.82,.86,1.02])}}
          >
            <Mentor pose="hero"/>
            <motion.div 
@@ -212,7 +234,7 @@ function App(){
              <div><b>◎</b><span><strong>Analyse mistakes</strong><small>Turn wrong answers into progress.</small></span></div>
            </div>
          </motion.div>
-         <motion.div className="mentor-scene-person" style={{opacity:mentor.opacity,x:useTransform(p,[.135,.23,.30],[-75,0,35]),scale:useTransform(p,[.135,.23,.30],[.88,1,.95])}}>
+         <motion.div className="mentor-scene-person" style={{opacity:mentor.opacity,x:mentorPersonX,scale:useTransform(p,[.135,.23,.30],[.88,1,.95])}}>
            <Mentor pose="explain"/><div className="scribble small">I’ll show you<br/>the logic. ↙</div>
          </motion.div>
          <motion.div className="chat-window glass" style={{opacity:mentor.opacity,x:useTransform(p,[.135,.22,.30],[100,0,-35]),rotateY:useTransform(p,[.135,.22,.30],[-10,0,3])}}>
@@ -236,7 +258,7 @@ function App(){
            <div className="answers"><span>A <b>12 sec</b></span><span className="chosen">B <b>15 sec</b></span><span>C <b>18 sec</b></span><span>D <b>20 sec</b></span></div>
            <Btn primary>Submit Answer →</Btn><div className="answer-note"><b>Mentor hint:</b> Start with the total distance.</div>
          </motion.div>
-         <motion.div className="practice-person" style={{opacity:practice.opacity,x:useTransform(p,[.285,.38,.445],[100,0,-20]),scale:useTransform(p,[.285,.38,.445],[.9,1,.94])}}>
+         <motion.div className="practice-person" style={{opacity:practice.opacity,x:practicePersonX,scale:useTransform(p,[.285,.38,.445],[.9,1,.94])}}>
            <Mentor pose="point"/><div className="hint-card glass"><span>✦</span><div><b>Hint</b><small>Start with the total distance.</small></div></div>
          </motion.div>
        </motion.section>
@@ -250,7 +272,7 @@ function App(){
            <div className="analytics-grid"><div className="ring"><strong>78%</strong><span>Accuracy</span></div><div className="bar-list"><Bar label="Number System" width="85%"/><Bar label="Ratio & Proportion" width="72%"/><Bar label="Time & Work" width="45%"/><Bar label="Data Interpretation" width="82%"/></div></div>
            <div className="study-plan"><b>Your Study Plan</b><span>✓ Focus on weak topics</span><span>✓ Practice targeted questions</span><span>✓ Revise key concepts</span><span>✓ Attempt a mock this week</span></div>
          </motion.div>
-         <motion.div className="progress-person" style={{opacity:progress.opacity,x:useTransform(p,[.43,.52,.59],[70,0,-25]),scale:useTransform(p,[.43,.52,.59],[.92,1,.95])}}>
+         <motion.div className="progress-person" style={{opacity:progress.opacity,x:progressPersonX,scale:useTransform(p,[.43,.52,.59],[.92,1,.95])}}>
            <Mentor pose="think"/><div className="stat one">81%<small>Accuracy</small></div><div className="stat two">347+<small>Questions</small></div><div className="stat three">12d<small>Study streak</small></div>
          </motion.div>
        </motion.section>
@@ -264,7 +286,7 @@ function App(){
             <motion.div className="eco-card" key={t} whileHover={{y:-7,scale:1.015}}><span className="eco-icon">{i}</span><b>{t}</b><small>{s}</small><i>↗</i></motion.div>
            )}
          </motion.div>
-         <motion.div className="ecosystem-person" style={{opacity:eco.opacity,x:useTransform(p,[.575,.66,.735],[70,0,-25])}}><Mentor pose="cta"/></motion.div>
+         <motion.div className="ecosystem-person" style={{opacity:eco.opacity,x:ecoPersonX}}><Mentor pose="cta"/></motion.div>
        </motion.section>
 
        <motion.section className="scene stories-scene" style={stories}>
@@ -284,7 +306,7 @@ function App(){
            <Eyebrow>Your journey starts here</Eyebrow><h2>Stop Preparing<br/><span className="gradient">Alone.</span></h2><p>Meet your personal CSAT Mentor — explanations when you're stuck, practice when you're ready, and a plan that changes with you.</p>
            <div className="actions"><Btn primary>Start Your CSAT Journey →</Btn><Btn>◉ Watch Demo</Btn></div><div className="trust"><span>◉ No credit card required</span><span>✓ Free plan available</span><span>◌ Cancel anytime</span></div>
          </motion.div>
-         <motion.div className="journey-person" style={{opacity:journey.opacity,x:useTransform(p,[.855,1],[100,0]),scale:useTransform(p,[.855,1],[.9,1])}}><Mentor pose="cta"/></motion.div>
+         <motion.div className="journey-person" style={{opacity:journey.opacity,x:journeyPersonX,scale:useTransform(p,[.855,1],[.9,1])}}><Mentor pose="cta"/></motion.div>
        </motion.section>
      </div>
    </main>
